@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SouthEast Bank</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-university"></i>
+                    <h1>SouthEast Bank</h1>
+                </div>
+                <nav class="nav">
+                    <a href="#home" class="nav-link active" data-page="home">Home</a>
+                    <a href="#note-calculator" class="nav-link" data-page="note-calculator">Note Calculator</a>
+                    <a href="#fdr-calculator" class="nav-link" data-page="fdr-calculator">FDR Calculator</a>
+                    <a href="#loan-calculator" class="nav-link" data-page="loan-calculator">Loan Calculator</a>
+                    <a href="#settings" class="nav-link" data-page="settings">Settings</a>
+                </nav>
+                <button class="theme-toggle" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <!-- Home Page -->
+        <section id="home" class="page active">
+            <div class="container">
+                <div class="hero">
+                    <h2>Vai Vai A To Z Centre</h2>
+                    <p>Southeast Bank Agent Banking Joymontop Bazar Outlet</p>
+                </div>
+                
+                <div class="calculator-grid">
+                    <div class="calculator-card" data-page="note-calculator">
+                        <div class="card-icon">
+                            <i class="fas fa-money-bill-wave"></i>
+                        </div>
+                        <h3>Note Calculator</h3>
+                        <p>Calculate total amount from different denominations of Bangladeshi currency notes</p>
+                        <button class="btn btn-primary">Open Calculator</button>
+                    </div>
+                    
+                    <div class="calculator-card" data-page="fdr-calculator">
+                        <div class="card-icon">
+                            <i class="fas fa-piggy-bank"></i>
+                        </div>
+                        <h3>FDR Calculator</h3>
+                        <p>Calculate Fixed Deposit Receipt returns with various terms and interest rates</p>
+                        <button class="btn btn-primary">Open Calculator</button>
+                    </div>
+                    
+                    <div class="calculator-card" data-page="loan-calculator">
+                        <div class="card-icon">
+                            <i class="fas fa-calculator"></i>
+                        </div>
+                        <h3>Loan Calculator</h3>
+                        <p>Calculate EMI, total payment, and interest for various loan amounts and terms</p>
+                        <button class="btn btn-primary">Open Calculator</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Note Calculator Page -->
+        <section id="note-calculator" class="page">
+            <div class="container">
+                <div class="page-header">
+                    <h2><i class="fas fa-money-bill-wave"></i> Note Calculator</h2>
+                    <p>Enter the count of each denomination to calculate the total amount</p>
+                </div>
+                
+                <!-- Modified calculator container to use 3-column layout for Note Calculator -->
+                <div class="note-calculator-container">
+                    <!-- Column 1: First 4 notes -->
+                    <div class="note-column">
+                        <div class="note-item">
+                            <label for="note1000">৳1000 Notes</label>
+                            <input type="number" id="note1000" class="note-input">
+                            <span class="subtotal">৳0</span>
+                        </div>
+                        <div class="note-item">
+                            <label for="note500">৳500 Notes</label>
+                            <input type="number" id="note500" class="note-input">
+                            <span class="subtotal">৳0</span>
+                        </div>
+                        <div class="note-item">
+                            <label for="note200">৳200 Notes</label>
+                            <input type="number" id="note200" class="note-input">
+                            <span class="subtotal">৳0</span>
+                        </div>
+                        <div class="note-item">
+                            <label for="note100">৳100 Notes</label>
+                            <input type="number" id="note100" class="note-input">
+                            <span class="subtotal">৳0</span>
+                        </div>
+                        <!-- Added dynamic note inputs container -->
+                        <div id="dynamicNotesColumn1"></div>
+                    </div>
+                    
+                    <!-- Column 2: Remaining 3 notes -->
+                    <div class="note-column">
+                        <div class="note-item">
+                            <label for="note50">৳50 Notes</label>
+                            <input type="number" id="note50" class="note-input">
+                            <span class="subtotal">৳0</span>
+                        </div>
+                        <div class="note-item">
+                            <label for="note20">৳20 Notes</label>
+                            <input type="number" id="note20" class="note-input">
+                            <span class="subtotal">৳0</span>
+                        </div>
+                        <div class="note-item">
+                            <label for="note10">৳10 Notes</label>
+                            <input type="number" id="note10" class="note-input">
+                            <span class="subtotal">৳0</span>
+                        </div>
+                        <!-- Added dynamic note inputs container -->
+                        <div id="dynamicNotesColumn2"></div>
+                        
+                        <!-- Added button to add custom note denominations -->
+                        <div class="button-group">
+                            <button class="btn btn-secondary" id="addCustomNote">Add Custom Note</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Column 3: Result section -->
+                    <div class="note-result-column">
+                        <div class="result-card">
+                            <h3>Total Amount</h3>
+                            <div class="total-amount" id="totalAmount">৳0</div>
+                            <div class="breakdown" id="noteBreakdown"></div>
+                        </div>
+                        
+                        <div class="button-group">
+                            <button class="btn btn-secondary" id="clearNotes">Clear All</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FDR Calculator Page -->
+        <section id="fdr-calculator" class="page">
+            <div class="container">
+                <div class="page-header">
+                    <h2><i class="fas fa-piggy-bank"></i> FDR Calculator</h2>
+                    <p>Calculate your Fixed Deposit Receipt returns with accurate interest calculations</p>
+                </div>
+                
+                <div class="calculator-container">
+                    <form class="input-section" id="fdrForm">
+                        <div class="form-group">
+                            <label for="fdrType">Type of FDR</label>
+                            <select id="fdrType" required>
+                                <option value="">Select FDR Type</option>
+                                <option value="1month">1 Month</option>
+                                <option value="2month">2 Month</option>
+                                <option value="3month">3 Month</option>
+                                <option value="75days">75 Days</option>
+                                <option value="100days">100 Days</option>
+                                <option value="6months">6 Months</option>
+                                <option value="mis1year">MIS 1 Year</option>
+                                <option value="mis3year">MIS 3 Year</option>
+                                <option value="mis5year">MIS 5 Years</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="depositAmount">Deposit Amount (BDT)</label>
+                            <input type="text" id="depositAmount" required>
+                            <!-- Added amount in words display -->
+                            <div id="depositAmountWords" class="amount-in-words hidden"></div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="interestRate">Rate of Interest (%)</label>
+                            <input type="number" id="interestRate" step="0.01" readonly>
+                            <small>Rate is automatically calculated based on FDR type and amount</small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Income Tax</label>
+                            <!-- Changed from radio buttons to dropdown with "No" as default -->
+                            <select id="incomeTax" required>
+                                <option value="no">No (15% tax)</option>
+                                <option value="yes">Yes (10% tax)</option>
+                            </select>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">Calculate FDR</button>
+                    </form>
+                    
+                    <div class="result-section">
+                        <div class="result-card" id="fdrResults" style="display: none;">
+                            <h3>FDR Calculation Results</h3>
+                            <div class="result-grid">
+                                <div class="result-item">
+                                    <label>Monthly Profit (Before Tax)</label>
+                                    <span id="monthlyProfitBeforeTax">৳0</span>
+                                </div>
+                                <div class="result-item">
+                                    <label>Total Profit (Before Tax)</label>
+                                    <span id="totalProfitBeforeTax">৳0</span>
+                                </div>
+                                <div class="result-item">
+                                    <label>Monthly Profit (After Tax)</label>
+                                    <span id="monthlyProfitAfterTax">৳0</span>
+                                </div>
+                                <div class="result-item">
+                                    <label>Total Profit (After Tax)</label>
+                                    <span id="totalProfitAfterTax">৳0</span>
+                                </div>
+                                <!-- Added new Grand Profit After Tax row -->
+                                <div class="result-item grand-total">
+                                    <label>Grand Profit After Tax</label>
+                                    <span id="grandProfitAfterTax">৳0</span>
+                                </div>
+                            </div>
+                            <div class="calculation-note">
+                                <small id="calculationDetails"></small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Loan Calculator Page -->
+        <section id="loan-calculator" class="page">
+            <div class="container">
+                <div class="page-header">
+                    <h2><i class="fas fa-calculator"></i> Loan Calculator</h2>
+                    <p>Calculate your loan EMI, total payment, and interest details</p>
+                </div>
+                
+                <div class="calculator-container">
+                    <form class="input-section" id="loanForm">
+                        <div class="form-group">
+                            <label for="loanAmount">Loan Amount (BDT)</label>
+                            <input type="text" id="loanAmount" required>
+                            <!-- Added amount in words display -->
+                            <div id="loanAmountWords" class="amount-in-words hidden"></div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="interestRateLoan">Interest Rate (Annual %)</label>
+                            <input type="number" id="interestRateLoan" min="0.01" step="0.01" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="loanPeriod">Loan Period</label>
+                            <div class="period-input">
+                                <input type="number" id="loanPeriod" min="1" required>
+                                <select id="periodType">
+                                    <option value="years">Years</option>
+                                    <option value="months">Months</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="processingFee">Processing Fee (BDT)</label>
+                            <input type="text" id="processingFee" value="0">
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">Calculate Loan</button>
+                    </form>
+                    
+                    <div class="result-section">
+                        <div class="result-card" id="loanResults" style="display: none;">
+                            <h3>Loan Calculation Results</h3>
+                            <div class="result-grid">
+                                <div class="result-item">
+                                    <label>Monthly EMI</label>
+                                    <span id="monthlyEMI">৳0</span>
+                                </div>
+                                <div class="result-item">
+                                    <label>Total Payment</label>
+                                    <span id="totalPayment">৳0</span>
+                                </div>
+                                <div class="result-item">
+                                    <label>Total Interest</label>
+                                    <span id="totalInterest">৳0</span>
+                                </div>
+                                <div class="result-item">
+                                    <label>Processing Fee</label>
+                                    <span id="processingFeeDisplay">৳0</span>
+                                </div>
+                                <div class="result-item grand-total">
+                                    <label>Grand Total</label>
+                                    <span id="grandTotal">৳0</span>
+                                </div>
+                            </div>
+                            <div class="calculation-note">
+                                <small id="loanCalculationDetails"></small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Settings Page -->
+        <section id="settings" class="page">
+            <div class="container">
+                <div class="page-header">
+                    <h2><i class="fas fa-cog"></i> Settings</h2>
+                    <p>Configure FDR rates and application preferences</p>
+                </div>
+                
+                <div class="settings-container">
+                    <div class="settings-section">
+                        <h3>FDR Interest Rates</h3>
+                        <div class="rate-settings" id="rateSettings">
+                            <!-- Rate settings will be populated by JavaScript -->
+                        </div>
+                        <div class="button-group">
+                            <button class="btn btn-primary" id="saveSettings">Save Settings</button>
+                            <button class="btn btn-secondary" id="resetSettings">Reset to Default</button>
+                        </div>
+                    </div>
+                    
+                    <div class="settings-section">
+                        <h3>Data Management</h3>
+                        <div class="button-group">
+                            <button class="btn btn-secondary" id="exportSettings">Export Settings</button>
+                            <input type="file" id="importSettings" accept=".json" style="display: none;">
+                            <button class="btn btn-secondary" id="importSettingsBtn">Import Settings</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Vai Vai A To Z Centre. All rights reserved. Professional Banking Solutions</p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

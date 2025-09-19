@@ -1,0 +1,1037 @@
+/* CSS Variables for Corporate Banking Theme */
+:root {
+  --background: #ffffff;
+  --foreground: #ecfeff;
+  --card: #ffffff;
+  --card-foreground: #475569;
+  --popover: #ffffff;
+  --popover-foreground: #475569;
+  --primary: #164e63;
+  --primary-foreground: #ffffff;
+  --secondary: #10b981;
+  --secondary-foreground: #ffffff;
+  --muted: #f1f5f9;
+  --muted-foreground: #475569;
+  --accent: #10b981;
+  --accent-foreground: #ffffff;
+  --destructive: #e53e3e;
+  --destructive-foreground: #ffffff;
+  --border: #d1d5db;
+  --input: #f1f5f9;
+  --ring: rgba(16, 185, 129, 0.5);
+  --radius: 0.5rem;
+  --sidebar: #ffffff;
+  --sidebar-foreground: #475569;
+  --sidebar-primary: #164e63;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #10b981;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #d1d5db;
+  --sidebar-ring: rgba(16, 185, 129, 0.5);
+  --primary-color: #164e63; /* Added for radio button styling */
+  --text-color: #475569; /* Added for radio button styling */
+}
+
+/* Enhanced dark mode with improved colors, gradients, and visual appeal */
+.dark {
+  --background: #0a0f1c;
+  --foreground: #f1f5f9;
+  --card: #1a2332;
+  --card-foreground: #e2e8f0;
+  --popover: #1a2332;
+  --popover-foreground: #e2e8f0;
+  --primary: #3b82f6;
+  --primary-foreground: #ffffff;
+  --secondary: #10d876;
+  --secondary-foreground: #ffffff;
+  --muted: #2d3748;
+  --muted-foreground: #a0aec0;
+  --accent: #10d876;
+  --accent-foreground: #ffffff;
+  --destructive: #f56565;
+  --destructive-foreground: #ffffff;
+  --border: #4a5568;
+  --input: #2d3748;
+  --ring: rgba(16, 216, 118, 0.4);
+  --radius: 0.5rem;
+  --sidebar: #1a2332;
+  --sidebar-foreground: #e2e8f0;
+  --sidebar-primary: #3b82f6;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #10d876;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #4a5568;
+  --sidebar-ring: rgba(16, 216, 118, 0.4);
+  --primary-color: #3b82f6; /* Added for radio button styling */
+  --text-color: #e2e8f0; /* Added for radio button styling */
+}
+
+/* Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Source Sans Pro", sans-serif;
+  background-color: var(--background);
+  color: var(--card-foreground);
+  line-height: 1.6;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Enhanced dark mode background with subtle gradient */
+.dark body {
+  background: linear-gradient(135deg, var(--background) 0%, #0f1629 100%);
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Header Styles */
+.header {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  padding: 1rem 0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+/* Enhanced dark mode header with gradient and improved shadow */
+.dark .header {
+  background: linear-gradient(135deg, var(--primary) 0%, #2563eb 100%);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  border-bottom: 1px solid var(--border);
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logo i {
+  font-size: 2rem;
+}
+
+.logo h1 {
+  font-family: "Playfair Display", serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.nav {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.nav-link {
+  color: var(--primary-foreground);
+  text-decoration: none;
+  font-weight: 400;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius);
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  background-color: var(--secondary);
+  color: var(--secondary-foreground);
+}
+
+/* Enhanced dark mode navigation with glow effect */
+.dark .nav-link:hover,
+.dark .nav-link.active {
+  background-color: var(--secondary);
+  box-shadow: 0 0 15px rgba(16, 216, 118, 0.3);
+  transform: translateY(-1px);
+}
+
+.theme-toggle {
+  background: none;
+  border: 2px solid var(--primary-foreground);
+  color: var(--primary-foreground);
+  padding: 0.5rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+  background-color: var(--primary-foreground);
+  color: var(--primary);
+}
+
+/* Enhanced dark mode theme toggle with glow effect */
+.dark .theme-toggle:hover {
+  background-color: var(--secondary);
+  border-color: var(--secondary);
+  color: var(--secondary-foreground);
+  box-shadow: 0 0 10px rgba(16, 216, 118, 0.4);
+}
+
+/* Main Content */
+.main {
+  min-height: calc(100vh - 140px);
+  padding: 2rem 0;
+}
+
+.page {
+  display: none;
+}
+
+.page.active {
+  display: block;
+}
+
+.page-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.page-header h2 {
+  font-family: "Playfair Display", serif;
+  font-size: 2.5rem;
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+
+.page-header p {
+  font-size: 1.1rem;
+  color: var(--muted-foreground);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Hero Section */
+.hero {
+  text-align: center;
+  padding: 4rem 0;
+  background: linear-gradient(135deg, var(--foreground), var(--muted));
+  border-radius: var(--radius);
+  margin-bottom: 3rem;
+}
+
+/* Enhanced dark mode hero with gradient and improved styling */
+.dark .hero {
+  background: linear-gradient(135deg, var(--card) 0%, var(--muted) 100%);
+  border: 1px solid var(--border);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.hero h2 {
+  font-family: "Playfair Display", serif;
+  font-size: 3rem;
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  color: var(--muted-foreground);
+}
+
+/* Calculator Grid */
+.calculator-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.calculator-card {
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.calculator-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  border-color: var(--secondary);
+}
+
+/* Enhanced dark mode calculator cards with glow and improved shadows */
+.dark .calculator-card {
+  background: linear-gradient(135deg, var(--card) 0%, #1e2a3a 100%);
+  border: 1px solid var(--border);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.dark .calculator-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(16, 216, 118, 0.1);
+  border-color: var(--secondary);
+}
+
+.card-icon {
+  font-size: 3rem;
+  color: var(--secondary);
+  margin-bottom: 1rem;
+}
+
+.calculator-card h3 {
+  font-family: "Playfair Display", serif;
+  font-size: 1.5rem;
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+
+.calculator-card p {
+  color: var(--muted-foreground);
+  margin-bottom: 1.5rem;
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+}
+
+.btn-primary:hover {
+  background-color: var(--secondary);
+  transform: translateY(-2px);
+}
+
+/* Enhanced dark mode buttons with glow effects */
+.dark .btn-primary:hover {
+  background: linear-gradient(135deg, var(--secondary) 0%, #0ea472 100%);
+  box-shadow: 0 4px 15px rgba(16, 216, 118, 0.3);
+  transform: translateY(-3px);
+}
+
+.btn-secondary {
+  background-color: var(--muted);
+  color: var(--muted-foreground);
+  border: 1px solid var(--border);
+}
+
+.btn-secondary:hover {
+  background-color: var(--secondary);
+  color: var(--secondary-foreground);
+  border-color: var(--secondary);
+}
+
+/* Enhanced dark mode secondary buttons */
+.dark .btn-secondary {
+  background: linear-gradient(135deg, var(--muted) 0%, #374151 100%);
+  border: 1px solid var(--border);
+}
+
+.dark .btn-secondary:hover {
+  background: linear-gradient(135deg, var(--secondary) 0%, #0ea472 100%);
+  box-shadow: 0 4px 15px rgba(16, 216, 118, 0.2);
+  transform: translateY(-2px);
+}
+
+/* Added remove button styling for custom notes */
+.btn-remove {
+  background-color: var(--destructive);
+  color: var(--destructive-foreground);
+  border: none;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-left: 0.5rem;
+}
+
+.btn-remove:hover {
+  background-color: #dc2626;
+  transform: scale(1.1);
+}
+
+.dark .btn-remove:hover {
+  box-shadow: 0 0 10px rgba(245, 101, 101, 0.4);
+}
+
+.button-group {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+/* Calculator Container */
+.calculator-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.input-section {
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+/* Enhanced dark mode input sections with gradient backgrounds */
+.dark .input-section {
+  background: linear-gradient(135deg, var(--card) 0%, #1e2a3a 100%);
+  border: 1px solid var(--border);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.result-section {
+  background-color: var(--muted);
+  border-radius: var(--radius);
+  padding: 2rem;
+}
+
+/* Enhanced dark mode result sections */
+.dark .result-section {
+  background: linear-gradient(135deg, var(--muted) 0%, #374151 100%);
+  border: 1px solid var(--border);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.result-card {
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+/* Enhanced dark mode result cards */
+.dark .result-card {
+  background: linear-gradient(135deg, var(--card) 0%, #1e2a3a 100%);
+  border: 1px solid var(--border);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.result-card h3 {
+  font-family: "Playfair Display", serif;
+  color: var(--primary);
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+/* Note Calculator Styles */
+.note-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.note-calculator-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.note-column {
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+/* Enhanced dark mode note columns */
+.dark .note-column {
+  background: linear-gradient(135deg, var(--card) 0%, #1e2a3a 100%);
+  border: 1px solid var(--border);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.note-result-column {
+  background-color: var(--muted);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+}
+
+/* Enhanced dark mode note result column */
+.dark .note-result-column {
+  background: linear-gradient(135deg, var(--muted) 0%, #374151 100%);
+  border: 1px solid var(--border);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.note-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.note-item label {
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.note-input,
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background-color: var(--input);
+  font-size: 1.2rem; /* Increased from 1rem */
+  font-weight: 600; /* Added bold font weight */
+  transition: border-color 0.3s ease;
+  /* hide number input spinners/arrows */
+  -webkit-appearance: none;
+  -moz-appearance: textfield;
+}
+
+/* Enhanced dark mode inputs with focus glow */
+.dark .note-input:focus,
+.dark .form-group input:focus,
+.dark .form-group select:focus {
+  border-color: var(--secondary);
+  box-shadow: 0 0 0 3px rgba(16, 216, 118, 0.1);
+  outline: none;
+}
+
+/* hide webkit number input spinners */
+.note-input::-webkit-outer-spin-button,
+.note-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* hide firefox number input spinners */
+.note-input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.subtotal {
+  font-weight: 600;
+  color: var(--secondary);
+  text-align: right;
+}
+
+.total-amount {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--primary);
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+/* Enhanced dark mode total amount with glow effect */
+.dark .total-amount {
+  color: var(--secondary);
+  text-shadow: 0 0 20px rgba(16, 216, 118, 0.3);
+}
+
+.breakdown {
+  font-size: 0.9rem;
+  color: var(--muted-foreground);
+  line-height: 1.4;
+}
+
+.amount-in-words {
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  background-color: var(--muted);
+  border-radius: var(--radius);
+  font-size: 0.9rem;
+  color: var(--muted-foreground);
+  font-style: italic;
+  border-left: 3px solid var(--secondary);
+}
+
+/* Enhanced dark mode amount in words */
+.dark .amount-in-words {
+  background: linear-gradient(135deg, var(--muted) 0%, #374151 100%);
+  border-left: 3px solid var(--secondary);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.amount-in-words.hidden {
+  display: none;
+}
+
+/* Form Styles */
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+}
+
+.form-group input[readonly] {
+  background-color: var(--muted);
+  color: var(--muted-foreground);
+}
+
+.form-group small {
+  display: block;
+  margin-top: 0.25rem;
+  color: var(--muted-foreground);
+  font-size: 0.875rem;
+}
+
+/* Enhanced radio button styling for better functionality */
+.horizontal-radio {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+
+.horizontal-radio .radio-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--text-color);
+  transition: color 0.3s ease;
+}
+
+.horizontal-radio .radio-label:hover {
+  color: var(--primary-color);
+}
+
+.horizontal-radio .radio-label input[type="radio"] {
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  cursor: pointer;
+  accent-color: var(--primary-color);
+}
+
+.horizontal-radio .radio-text {
+  font-weight: bold;
+  font-size: 0.95rem;
+  white-space: nowrap;
+}
+
+.radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.radio-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  font-weight: 500;
+  color: var(--text-color);
+  transition: color 0.3s ease;
+}
+
+.radio-label:hover {
+  color: var(--primary-color);
+}
+
+.radio-label input[type="radio"] {
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  cursor: pointer;
+  accent-color: var(--primary-color);
+}
+
+.period-input {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.period-input input {
+  flex: 2;
+}
+
+.period-input select {
+  flex: 1;
+}
+
+/* Result Grid */
+.result-grid {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.result-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem;
+  background-color: var(--muted);
+  border-radius: var(--radius);
+}
+
+/* Enhanced dark mode result items */
+.dark .result-item {
+  background: linear-gradient(135deg, var(--muted) 0%, #374151 100%);
+  border: 1px solid var(--border);
+}
+
+.result-item label {
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.result-item span {
+  font-weight: 700;
+  color: var(--secondary);
+  font-size: 1.1rem;
+}
+
+.result-item.grand-total {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+}
+
+/* Enhanced dark mode grand total with gradient */
+.dark .result-item.grand-total {
+  background: linear-gradient(135deg, var(--primary) 0%, #2563eb 100%);
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+}
+
+.result-item.grand-total label,
+.result-item.grand-total span {
+  color: var(--primary-foreground);
+}
+
+.calculation-note {
+  padding: 1rem;
+  background-color: var(--muted);
+  border-radius: var(--radius);
+  border-left: 4px solid var(--secondary);
+}
+
+/* Enhanced dark mode calculation notes */
+.dark .calculation-note {
+  background: linear-gradient(135deg, var(--muted) 0%, #374151 100%);
+  border-left: 4px solid var(--secondary);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.calculation-note small {
+  color: var(--muted-foreground);
+  line-height: 1.4;
+}
+
+/* Settings Styles */
+.settings-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.settings-section {
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+/* Enhanced dark mode settings sections */
+.dark .settings-section {
+  background: linear-gradient(135deg, var(--card) 0%, #1e2a3a 100%);
+  border: 1px solid var(--border);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.settings-section h3 {
+  font-family: "Playfair Display", serif;
+  color: var(--primary);
+  margin-bottom: 1.5rem;
+}
+
+.rate-settings {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.rate-item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1rem;
+  align-items: center;
+  padding: 1rem;
+  background-color: var(--muted);
+  border-radius: var(--radius);
+}
+
+/* Enhanced dark mode rate items */
+.dark .rate-item {
+  background: linear-gradient(135deg, var(--muted) 0%, #374151 100%);
+  border: 1px solid var(--border);
+}
+
+.rate-item label {
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.rate-item input {
+  width: 120px;
+  padding: 0.5rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background-color: var(--input);
+}
+
+/* About Styles */
+.about-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.about-section {
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+/* Enhanced dark mode about sections */
+.dark .about-section {
+  background: linear-gradient(135deg, var(--card) 0%, #1e2a3a 100%);
+  border: 1px solid var(--border);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.about-section h3 {
+  font-family: "Playfair Display", serif;
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+
+.about-section ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.about-section li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.about-section li:before {
+  content: "✓";
+  color: var(--secondary);
+  font-weight: bold;
+  margin-right: 0.5rem;
+}
+
+/* Footer */
+.footer {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  text-align: center;
+  padding: 2rem 0;
+  margin-top: 3rem;
+}
+
+/* Enhanced dark mode footer */
+.dark .footer {
+  background: linear-gradient(135deg, var(--primary) 0%, #2563eb 100%);
+  border-top: 1px solid var(--border);
+}
+
+/* Error Styles */
+.error {
+  color: var(--destructive);
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+.input-error {
+  border-color: var(--destructive);
+}
+
+/* Success Toast */
+.toast {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: var(--secondary);
+  color: var(--secondary-foreground);
+  padding: 1rem 1.5rem;
+  border-radius: var(--radius);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+}
+
+/* Enhanced dark mode toast with glow effect */
+.dark .toast {
+  background: linear-gradient(135deg, var(--secondary) 0%, #0ea472 100%);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3), 0 0 20px rgba(16, 216, 118, 0.2);
+}
+
+.toast.show {
+  transform: translateX(0);
+}
+
+.toast.error {
+  background-color: var(--destructive);
+  color: var(--destructive-foreground);
+}
+
+.dark .toast.error {
+  background: linear-gradient(135deg, var(--destructive) 0%, #dc2626 100%);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3), 0 0 20px rgba(245, 101, 101, 0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .header-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .nav {
+    justify-content: center;
+  }
+
+  .hero h2 {
+    font-size: 2rem;
+  }
+
+  .page-header h2 {
+    font-size: 2rem;
+  }
+
+  .calculator-container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .calculator-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .note-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .radio-group {
+    flex-direction: column;
+  }
+
+  .period-input {
+    flex-direction: column;
+  }
+
+  .result-item {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.5rem;
+  }
+
+  .button-group {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  .note-calculator-container {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 15px;
+  }
+
+  .input-section,
+  .result-section {
+    padding: 1.5rem;
+  }
+
+  .hero {
+    padding: 2rem 0;
+  }
+
+  .hero h2 {
+    font-size: 1.5rem;
+  }
+
+  .total-amount {
+    font-size: 2rem;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .header,
+  .footer,
+  .btn,
+  .theme-toggle {
+    display: none;
+  }
+
+  .page {
+    display: block !important;
+  }
+
+  .calculator-container {
+    grid-template-columns: 1fr;
+  }
+
+  body {
+    background: white;
+    color: black;
+  }
+}
