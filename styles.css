@@ -930,6 +930,164 @@ body {
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3), 0 0 20px rgba(245, 101, 101, 0.2);
 }
 
+/* Electricity Bill Counter Styles */
+.electricity-bill-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.bill-input-column {
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.dark .bill-input-column {
+  background: linear-gradient(135deg, var(--card) 0%, #1e2a3a 100%);
+  border: 1px solid var(--border);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.bill-input-column h3 {
+  font-family: "Playfair Display", serif;
+  color: var(--primary);
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.bill-calculation-column {
+  background-color: var(--muted);
+  border-radius: var(--radius);
+  padding: 2rem;
+}
+
+.dark .bill-calculation-column {
+  background: linear-gradient(135deg, var(--muted) 0%, #374151 100%);
+  border: 1px solid var(--border);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.calculation-card {
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.dark .calculation-card {
+  background: linear-gradient(135deg, var(--card) 0%, #1e2a3a 100%);
+  border: 1px solid var(--border);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.bill-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.bill-item label {
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.bill-input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background-color: var(--input);
+  font-size: 1.1rem;
+  font-weight: 600;
+  transition: border-color 0.3s ease;
+}
+
+.dark .bill-input:focus {
+  border-color: var(--secondary);
+  box-shadow: 0 0 0 3px rgba(16, 216, 118, 0.1);
+  outline: none;
+}
+
+.total-bill-amount {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background-color: var(--muted);
+  border-radius: var(--radius);
+}
+
+.dark .total-bill-amount {
+  background: linear-gradient(135deg, var(--muted) 0%, #374151 100%);
+  border: 1px solid var(--border);
+}
+
+.total-bill-amount label {
+  display: block;
+  font-weight: 600;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+}
+
+.customer-payment-amount {
+  text-align: center;
+  margin: 2rem 0;
+  padding: 1rem;
+  background-color: var(--muted);
+  border-radius: var(--radius);
+}
+
+.dark .customer-payment-amount {
+  background: linear-gradient(135deg, var(--muted) 0%, #374151 100%);
+  border: 1px solid var(--border);
+}
+
+.customer-payment-amount label {
+  display: block;
+  font-weight: 600;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+}
+
+.amount-display {
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.total-amount-red {
+  color: #dc2626;
+}
+
+.dark .total-amount-red {
+  color: #f87171;
+  text-shadow: 0 0 20px rgba(248, 113, 113, 0.3);
+}
+
+.customer-payment-positive {
+  color: #16a34a;
+}
+
+.dark .customer-payment-positive {
+  color: #4ade80;
+  text-shadow: 0 0 20px rgba(74, 222, 128, 0.3);
+}
+
+.customer-payment-negative {
+  color: #dc2626;
+}
+
+.dark .customer-payment-negative {
+  color: #f87171;
+  text-shadow: 0 0 20px rgba(248, 113, 113, 0.3);
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .header-content {
@@ -987,6 +1145,11 @@ body {
   .note-calculator-container {
     grid-template-columns: 1fr;
     gap: 1.5rem;
+  }
+
+  .electricity-bill-container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
   }
 }
 

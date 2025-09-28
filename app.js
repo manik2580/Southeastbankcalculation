@@ -6,6 +6,7 @@ class BanglaBankCalculators {
     this.fdrRates = this.getDefaultFDRRates()
     this.customNotes = []
     this.noteCounter = 0
+    this.billCounter = 15 // Start with 15 bills as required
     this.init()
   }
 
@@ -15,6 +16,7 @@ class BanglaBankCalculators {
     this.setupNoteCalculator()
     this.setupFDRCalculator()
     this.setupLoanCalculator()
+    this.setupElectricityBillCounter()
     this.setupSettings()
     this.showPage("home")
   }
@@ -494,6 +496,7 @@ class BanglaBankCalculators {
       isDarkMode: this.isDarkMode,
       customNotes: this.customNotes,
       noteCounter: this.noteCounter,
+      billCounter: this.billCounter,
     }
 
     const dataStr = JSON.stringify(settings, null, 2)
@@ -532,6 +535,12 @@ class BanglaBankCalculators {
           setTimeout(() => this.restoreCustomNotes(), 100)
         }
 
+        if (settings.billCounter !== undefined) {
+          this.billCounter = settings.billCounter
+          // Restore bill inputs on page load
+          setTimeout(() => this.generateBillInputs(), 100)
+        }
+
         this.saveSettings()
         this.showToast("Settings imported successfully!", "success")
       } catch (error) {
@@ -566,6 +575,135 @@ class BanglaBankCalculators {
         })
       }
     })
+  }
+
+  setupElectricityBillCounter() {
+    // Generate initial 15 bill inputs
+    this.generateBillInputs()
+
+    const addBillBtn = document.getElementById("addBillBtn")
+    const clearAllBillsBtn = document.getElementById("clearAllBills")
+    const receivedAmountInput = document.getElementById("receivedAmount")
+    const bankChargeInput = document.getElementById("bankCharge")
+
+    addBillBtn.addEventListener("click", () => {
+      this.addNewBill()
+    })
+
+    clearAllBillsBtn.addEventListener("click", () => {
+      this.clearAllBills()
+    })
+
+    receivedAmountInput.addEventListener("input", () => {
+      this.formatInputWithCommas(receivedAmountInput)
+      this.calculateCustomerPayment()
+    })
+
+    bankChargeInput.addEventListener("input", () => {
+      this.formatInputWithCommas(bankChargeInput)
+      this.calculateCustomerPayment()
+    })
+  }
+
+  generateBillInputs() {
+    const container = document.getElementById("billInputs")
+    container.innerHTML = ""
+
+    for (let i = 1; i <= this.billCounter; i++) {
+      const billItem = document.createElement("div")
+      billItem.className = "bill-item"
+      billItem.innerHTML = `
+        <label for="bill${i}">Bill ${i}</label>
+        <input type="text" id="bill${i}" class="bill-input" data-bill-number="${i}">
+      `
+      container.appendChild(billItem)
+
+      // Add event listener to new input
+      const billInput = document.getElementById(`bill${i}`)
+      billInput.addEventListener("input", () => {
+        this.formatInputWithCommas(billInput)
+        this.calculateTotalBill()
+      })
+    }
+  }
+
+  addNewBill() {
+    this.billCounter++
+    const container = document.getElementById("billInputs")
+
+    const billItem = document.createElement("div")
+    billItem.className = "bill-item"
+    billItem.innerHTML = `
+      <label for="bill${this.billCounter}">Bill ${this.billCounter}</label>
+      <input type="text" id="bill${this.billCounter}" class="bill-input" data-bill-number="${this.billCounter}">
+    `
+    container.appendChild(billItem)
+
+    // Add event listener to new input
+    const billInput = document.getElementById(`bill${this.billCounter}`)
+    billInput.addEventListener("input", () => {
+      this.formatInputWithCommas(billInput)
+      this.calculateTotalBill()
+    })
+
+    this.showToast(`Added Bill ${this.billCounter}!`, "success")
+  }
+
+  calculateTotalBill() {
+    let total = 0
+    const billInputs = document.querySelectorAll(".bill-input[data-bill-number]")
+
+    billInputs.forEach((input) => {
+      const value = Number.parseFloat(input.value.replace(/,/g, "")) || 0
+      total += value
+    })
+
+    document.getElementById("totalBillAmount").textContent = `৳${this.formatNumber(total)}`
+    this.calculateCustomerPayment()
+  }
+
+  calculateCustomerPayment() {
+    const totalBillAmount =
+      Number.parseFloat(document.getElementById("totalBillAmount").textContent.replace(/[৳,]/g, "")) || 0
+    const receivedAmount = Number.parseFloat(document.getElementById("receivedAmount").value.replace(/,/g, "")) || 0
+    const bankCharge = Number.parseFloat(document.getElementById("bankCharge").value.replace(/,/g, "")) || 0
+
+    // Customer Payment = Received Amount - Total Bill Amount - Bank Charge
+    const customerPayment = receivedAmount - totalBillAmount - bankCharge
+    const customerPaymentElement = document.getElementById("customerPaymentAmount")
+
+    if (customerPayment > 0) {
+      // Customer should receive money (positive amount in green)
+      customerPaymentElement.textContent = `৳${this.formatNumber(customerPayment)}`
+      customerPaymentElement.className = "amount-display customer-payment-positive"
+    } else if (customerPayment < 0) {
+      // Customer owes money (negative amount in red with minus sign)
+      customerPaymentElement.textContent = `-৳${this.formatNumber(Math.abs(customerPayment))}`
+      customerPaymentElement.className = "amount-display customer-payment-negative"
+    } else {
+      // Exact amount
+      customerPaymentElement.textContent = `৳${this.formatNumber(customerPayment)}`
+      customerPaymentElement.className = "amount-display"
+    }
+  }
+
+  clearAllBills() {
+    // Clear all bill inputs
+    const billInputs = document.querySelectorAll(".bill-input[data-bill-number]")
+    billInputs.forEach((input) => {
+      input.value = ""
+    })
+
+    // Clear received amount and bank charge
+    document.getElementById("receivedAmount").value = ""
+    document.getElementById("bankCharge").value = ""
+
+    // Reset calculations
+    document.getElementById("totalBillAmount").textContent = "৳0"
+    document.getElementById("customerPaymentAmount").textContent = "৳0"
+    document.getElementById("customerPaymentAmount").className = "amount-display"
+
+    this.showToast("All bills cleared!", "success")
   }
 
   // Utility Functions
@@ -666,6 +804,7 @@ class BanglaBankCalculators {
       isDarkMode: this.isDarkMode,
       customNotes: this.customNotes,
       noteCounter: this.noteCounter,
+      billCounter: this.billCounter,
     }
     localStorage.setItem("banglaBankSettings", JSON.stringify(settings))
   }
@@ -689,6 +828,11 @@ class BanglaBankCalculators {
           this.noteCounter = settings.noteCounter || 0
           // Restore custom notes on page load
           setTimeout(() => this.restoreCustomNotes(), 100)
+        }
+        if (settings.billCounter !== undefined) {
+          this.billCounter = settings.billCounter
+          // Restore bill inputs on page load
+          setTimeout(() => this.generateBillInputs(), 100)
         }
       } catch (error) {
         console.error("Error loading settings:", error)
